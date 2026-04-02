@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>pixL - Hakkımızda</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    
+    <div class="site-container">
+
+        <nav class="sidebar">
+            <div class="logo-container" title="pixL Anasayfa" onclick="window.location.href='index.html'">
+                <img src="logo.jpg" alt="pixL Logo" class="site-logo">
+            </div>
+            
+            <a href="index.html" class="menu-item" data-lang="home">Ana Sayfa</a>
+            <a href="index.html" class="menu-item" data-lang="all_games">Tüm Oyunlar</a>
+            
+            <div class="menu-item" id="kategori-btn" onclick="kategoriAc()">
+                <span data-lang="categories">Kategoriler</span> <span id="ok">▼</span>
+            </div>
+            <div class="submenu" id="alt-menu">
+                <a href="#" data-lang="action">Aksiyon</a>
+                <a href="#" data-lang="racing">Yarış</a>
+                <a href="#" data-lang="puzzle">Bulmaca</a>
+                <a href="#" data-lang="girls">Kız Oyunları</a>
+            </div>
+
+            <a href="hakkimizda.html" class="menu-item active" data-lang="about">Hakkımızda</a>
+        </nav>
+
+        <main class="content-area">
+            <div class="header-section">
+                <div class="top-controls">
+                    <label class="theme-switch" title="Tema Değiştir">
+                        <input type="checkbox" id="themeToggle" onchange="toggleTheme()">
+                        <span class="slider"></span>
+                    </label>
+                    
+                    <div class="language-flags">
+                        <span class="lang-btn" onclick="changeLanguage('tr')" title="Türkçe">TR</span>
+                        <span class="lang-btn" onclick="changeLanguage('en')" title="English">EN</span>
+                    </div>
+                </div>
+                
+                <header class="top-bar">
+                    <input type="text" class="search-input" data-lang="search_placeholder" placeholder="Oyun Ara (Örn: Ateş ve Su)...">
+                    <button class="search-btn">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <circle cx="11" cy="11" r="8"></circle>
+                            <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+                        </svg>
+                    </button>
+                </header>
+            </div>
+            
+            <div class="about-header">
+                <h1 data-lang="about_title">Biz Kimiz?</h1>
+                <p data-lang="about_text">
+                    Biz, Yapay Zeka ve Makine Öğrenmesi bölümünde okuyan yazılım tutkunu 5 birinci sınıf öğrencisinden oluşan <strong>pixL</strong> ekibiyiz. Hem kendimizi geliştirmek hem de kullanıcılara karmaşadan uzak, doğrudan oyun odaklı hızlı bir eğlence platformu sunmak için bu siteyi hayata geçirdik. Ancak <strong>pixL</strong> sadece bizim eklediğimiz oyunlardan ibaret kapalı bir sistem değil; aynı zamanda bağımsız geliştiriciler için de özgür bir sahne! Eğer kendi tasarlayıp kodladığın bir oyun varsa ve bunun binlerce kişi tarafından oynanmasını istiyorsan, oyununu sitemizde yayınlamamız için bizimle iletişime geçebilir, bu eğlenceli topluluğun bir parçası olabilirsin.
+                </p>
+            </div>
+
+            <div class="team-grid">
+                
+                <div class="team-card">
+                    <div class="avatar"><img src="ayberk.jpg" alt="Ayberk Kar"></div>
+                    <h3>Ayberk Kar</h3>
+                    <div class="social-links">
+                        <a href="mailto:ayberkkar80@gmail.com">📧 ayberkkar80@gmail.com</a>
+                        <a href="https://github.com/ayberkkr" target="_blank">💻 github.com/ayberkkr</a>
+                    </div>
+                </div>
+
+                <div class="team-card">
+                    <div class="avatar"><img src="emre.jpg" alt="Emre Türkbay"></div>
+                    <h3>Emre Türkbay</h3>
+                    <div class="social-links">
+                        <a href="mailto:emreturkbay002@gmail.com">📧 emreturkbay002@gmail.com</a>
+                        <a href="https://github.com/emreturkby" target="_blank">💻 github.com/emreturkby</a>
+                    </div>
+                </div>
+
+                <div class="team-card">
+                    <div class="avatar"><img src="elif.jpg" alt="Elif Sude Kapan"></div>
+                    <h3>Elif Sude Kapan</h3>
+                    <div class="social-links">
+                        <a href="mailto:elifsudekapann@gmail.com">📧 elifsudekapann@gmail.com</a>
+                        <a href="https://github.com/efilsude" target="_blank">💻 github.com/efilsude</a>
+                    </div>
+                </div>
+
+                <div class="team-card">
+                    <div class="avatar"><img src="gizem.jpg" alt="Gizem Öksüz"></div>
+                    <h3>Gizem Öksüz</h3>
+                    <div class="social-links">
+                        <a href="mailto:oksuzgizem746@gmail.com">📧 oksuzgizem746@gmail.com</a>
+                        <a href="https://github.com/Gizemksz" target="_blank">💻 github.com/Gizemksz</a>
+                    </div>
+                </div>
+
+                <div class="team-card">
+                    <div class="avatar"><img src="andac.jpg" alt="Ali Andaç Erdaş"></div>
+                    <h3>Ali Andaç Erdaş</h3>
+                    <div class="social-links">
+                        <a href="mailto:aliandacerdass@gmail.com">📧 aliandacerdass@gmail.com</a>
+                        <a href="https://github.com/Valenteinstudio" target="_blank">💻 github.com/Valenteinstudio</a>
+                    </div>
+                </div>
+
+            </div>
+
+        </main>
+    </div>
+
+    <script>
+        function toggleTheme() { document.body.classList.toggle('light-mode'); }
+        function kategoriAc() {
+            var menu = document.getElementById("alt-menu");
+            var ok = document.getElementById("ok");
+            if (menu.style.display === "block") {
+                menu.style.display = "none";
+                ok.innerHTML = "▼";
+            } else {
+                menu.style.display = "block";
+                ok.innerHTML = "▲"; 
+            }
+        }
+
+        const dictionary = {
+            'tr': {
+                'home': 'Ana Sayfa', 'all_games': 'Tüm Oyunlar', 'categories': 'Kategoriler',
+                'action': 'Aksiyon', 'racing': 'Yarış', 'puzzle': 'Bulmaca', 'girls': 'Kız Oyunları',
+                'about': 'Hakkımızda', 'search_placeholder': 'Oyun Ara (Örn: Ateş ve Su)...',
+                'pop_game_1': 'STRIKE FORCE HEROES', 'iframe_text_1': '(Buraya oyunun iFrame\'i veya resmi gelecek)',
+                'pop_game_2': 'ATEŞ VE SU', 'iframe_text_2': '(Efsanevi 2 kişilik macera oyunu)',
+                'pop_game_3': 'ARABA YARIŞI 3D', 'iframe_text_3': '(Asfaltta hız sınırlarını zorla!)',
+                'pop_game_4': 'BULMACA USTASI', 'iframe_text_4': '(Zekanı test edecek zorlu bölümler)',
+                'game_1': 'OYUN 1', 'game_2': 'OYUN 2', 'game_3': 'OYUN 3', 'game_4': 'OYUN 4',
+                'no_results_title': 'Sonuç Bulunamadı...', 'no_results_text': 'Farklı bir kelimeyle tekrar aramayı dene.',
+                'about_title': 'Biz Kimiz?',
+                'about_text': 'Biz, Yapay Zeka ve Makine Öğrenmesi bölümünde okuyan yazılım tutkunu 5 birinci sınıf öğrencisinden oluşan <strong>pixL</strong> ekibiyiz. Hem kendimizi geliştirmek hem de kullanıcılara karmaşadan uzak, doğrudan oyun odaklı hızlı bir eğlence platformu sunmak için bu siteyi hayata geçirdik. Ancak <strong>pixL</strong> sadece bizim eklediğimiz oyunlardan ibaret kapalı bir sistem değil; aynı zamanda bağımsız geliştiriciler için de özgür bir sahne! Eğer kendi tasarlayıp kodladığın bir oyun varsa ve bunun binlerce kişi tarafından oynanmasını istiyorsan, oyununu sitemizde yayınlamamız için bizimle iletişime geçebilir, bu eğlenceli topluluğun bir parçası olabilirsin.'
+            },
+            'en': {
+                'home': 'Home', 'all_games': 'All Games', 'categories': 'Categories',
+                'action': 'Action', 'racing': 'Racing', 'puzzle': 'Puzzle', 'girls': 'Girls Games',
+                'about': 'About Us', 'search_placeholder': 'Search Game (e.g., Fireboy and Watergirl)...',
+                'pop_game_1': 'STRIKE FORCE HEROES', 'iframe_text_1': '(Game iFrame or image will be placed here)',
+                'pop_game_2': 'FIREBOY & WATERGIRL', 'iframe_text_2': '(Legendary 2-player adventure game)',
+                'pop_game_3': 'CAR RACING 3D', 'iframe_text_3': '(Push the speed limits on the asphalt!)',
+                'pop_game_4': 'PUZZLE MASTER', 'iframe_text_4': '(Challenging levels to test your brain)',
+                'game_1': 'GAME 1', 'game_2': 'GAME 2', 'game_3': 'GAME 3', 'game_4': 'GAME 4',
+                'no_results_title': 'No Results Found...', 'no_results_text': 'Try searching with a different keyword.',
+                'about_title': 'Who Are We?',
+                'about_text': 'We are the <strong>pixL</strong> team, consisting of 5 passionate freshman software engineering students studying Artificial Intelligence and Machine Learning. We brought this site to life both to develop ourselves and to offer users a quick entertainment platform focused directly on games, free from clutter. However, <strong>pixL</strong> is not just a closed system consisting of the games we add; it is also an open stage for independent developers! If you have a game you designed and coded yourself and want it to be played by thousands of people, you can contact us to publish your game on our site and become a part of this fun community.'
+            }
+        };
+
+        function changeLanguage(lang) {
+            const elements = document.querySelectorAll('[data-lang]');
+            elements.forEach(el => {
+                const key = el.getAttribute('data-lang');
+                if (dictionary[lang][key]) {
+                    if (el.tagName === 'INPUT') el.placeholder = dictionary[lang][key];
+                    else if (el.tagName === 'P' || el.tagName === 'H3') el.innerHTML = dictionary[lang][key]; 
+                    else el.innerText = dictionary[lang][key];
+                }
+            });
+        }
+    </script>
+</body>
+</html>

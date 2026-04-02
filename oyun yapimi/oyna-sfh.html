@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>pixL - Strike Force Heroes Oyna</title>
+    <link rel="stylesheet" href="style.css">
+    
+    <!-- Ruffle.js - Flash Emülatörü -->
+    <script src="https://unpkg.com/@ruffle-rs/ruffle"></script>
+
+    <!-- Tam ekran yapıldığında kenarlıkları sıfırlayan küçük stil ayarı -->
+    <style>
+        #game-container:fullscreen {
+            width: 100vw !important;
+            height: 100vh !important;
+            background-color: black;
+            border: none !important;
+            border-radius: 0 !important;
+            max-width: none !important;
+        }
+        #game-container:fullscreen embed {
+            width: 100%;
+            height: 100%;
+        }
+    </style>
+</head>
+<body>
+    
+    <div class="site-container">
+
+        <!-- STANDART SOL MENÜMÜZ -->
+        <nav class="sidebar">
+            <div class="logo-container" title="pixL Anasayfa" onclick="window.location.href='index.html'">
+                <img src="logo.jpg" alt="pixL Logo" class="site-logo">
+            </div>
+            
+            <a href="index.html" class="menu-item">Ana Sayfa</a>
+            <a href="index.html" class="menu-item">Tüm Oyunlar</a>
+            
+            <div class="menu-item" id="kategori-btn" onclick="kategoriAc()">
+                <span>Kategoriler</span> <span id="ok">▼</span>
+            </div>
+            <div class="submenu" id="alt-menu">
+                <a href="#">Aksiyon</a>
+                <a href="#">Yarış</a>
+                <a href="#">Bulmaca</a>
+            </div>
+
+            <a href="hakkimizda.html" class="menu-item">Hakkımızda</a>
+        </nav>
+
+        <!-- OYUN ALANI -->
+        <main class="content-area">
+            
+            <!-- Üst Bar -->
+            <div class="header-section">
+                <div class="top-controls">
+                    <label class="theme-switch" title="Tema Değiştir">
+                        <input type="checkbox" id="themeToggle" onchange="toggleTheme()">
+                        <span class="slider"></span>
+                    </label>
+                </div>
+            </div>
+
+            <!-- OYUN KUTUSU VE BİLGİLERİ -->
+            <div style="background-color: var(--bg-card); padding: 30px; border-radius: 8px; border: 2px solid var(--border-color); text-align: center;">
+                <h1 style="color: var(--accent-color); margin-top: 0; margin-bottom: 20px;">STRIKE FORCE HEROES</h1>
+                
+                <!-- Tam Ekran Butonu -->
+                <button onclick="tamEkranYap()" style="margin-bottom: 20px; padding: 12px 25px; background-color: var(--accent-color); color: white; border: none; border-radius: 5px; cursor: pointer; font-weight: bold; font-size: 16px; transition: 0.3s; box-shadow: 0 4px 10px rgba(255, 59, 59, 0.3);">
+                    <svg style="vertical-align: middle; margin-right: 8px;" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M8 3H5a2 2 0 0 0-2 2v3m18 0V5a2 2 0 0 0-2-2h-3m0 18h3a2 2 0 0 0 2-2v-3M3 16v3a2 2 0 0 0 2 2h3"></path></svg>
+                    TAM EKRAN OYNA
+                </button>
+
+                <!-- Oyun Embed Alanı -->
+                <div id="game-container" style="width: 100%; max-width: 900px; height: 600px; margin: 0 auto; border: 4px solid var(--border-color); border-radius: 8px; overflow: hidden; background-color: #000;">
+                    <!-- SWF DOSYASININ YOLU BURADA -->
+                    <embed src="oyunlar/strikeforce/sfh.swf" width="100%" height="100%">
+                </div>
+                
+                <!-- Oyun Hikayesi ve Kontroller -->
+                <div style="margin-top: 30px; text-align: left; background-color: var(--bg-sidebar); padding: 25px; border-radius: 8px; border: 1px solid var(--border-color);">
+                    <h2 style="color: var(--accent-color); margin-top: 0; border-bottom: 2px solid var(--border-color); padding-bottom: 10px;">Oyun Hakkında</h2>
+                    <p style="color: var(--text-main); line-height: 1.6; font-size: 16px;">
+                        Strike Force Heroes, seni aksiyonun tam ortasına bırakan efsanevi bir 2D platform nişancı oyunudur. 
+                        Gizli bir adada yer alan araştırma tesisine yapılan saldırının ardından hayatta kalmaya ve dünyayı tehdit eden 
+                        büyük bir tehlikeyi durdurmaya çalışıyorsun. Sınıfını seç (Mühendis, Komando, Tank veya Keskin Nişancı), 
+                        yüzlerce silahın kilidini aç ve askerini tepeden tırnağa özelleştir!
+                    </p>
+                    
+                    <h2 style="color: var(--accent-color); margin-top: 30px; border-bottom: 2px solid var(--border-color); padding-bottom: 10px;">🎮 Kontroller</h2>
+                    <ul style="color: var(--text-main); line-height: 1.8; font-size: 16px; list-style-type: square;">
+                        <li><strong>W, A, S, D</strong> veya <strong>Yön Tuşları:</strong> Karakteri hareket ettir, zıpla veya çömel.</li>
+                        <li><strong>Fare (Mouse):</strong> Nişan al ve ateş et.</li>
+                        <li><strong>Q</strong> veya <strong>Shift:</strong> Birincil ve ikincil silah arasında geçiş yap.</li>
+                        <li><strong>R:</strong> Silahın şarjörünü yenile (Reload).</li>
+                        <li><strong>E</strong> veya <strong>Ctrl:</strong> Killstreak (Özel yetenek) kullan.</li>
+                    </ul>
+                </div>
+
+            </div>
+
+        </main>
+    </div>
+
+    <!-- JAVASCRIPT KODLARI -->
+    <script>
+        // Tema Değiştirme
+        function toggleTheme() { document.body.classList.toggle('light-mode'); }
+        
+        // Kategori Açılır Menü
+        function kategoriAc() {
+            var menu = document.getElementById("alt-menu");
+            var ok = document.getElementById("ok");
+            if (menu.style.display === "block") {
+                menu.style.display = "none";
+                ok.innerHTML = "▼";
+            } else {
+                menu.style.display = "block";
+                ok.innerHTML = "▲"; 
+            }
+        }
+
+        // Tam Ekran Yapma Fonksiyonu
+        function tamEkranYap() {
+            const gameContainer = document.getElementById('game-container');
+            if (gameContainer.requestFullscreen) {
+                gameContainer.requestFullscreen();
+            } else if (gameContainer.webkitRequestFullscreen) { /* Safari Desteği */
+                gameContainer.webkitRequestFullscreen();
+            } else if (gameContainer.msRequestFullscreen) { /* IE11 Desteği */
+                gameContainer.msRequestFullscreen();
+            }
+        }
+    </script>
+</body>
+</html>
