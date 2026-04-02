@@ -1,0 +1,23 @@
+[
+  {
+    "id": "sfh1",
+    "ad": "STRIKE FORCE HEROES",
+    "aciklama": "Strike Force Heroes, seni aksiyonun tam ortasına bırakan efsanevi bir 2D platform nişancı oyunudur.",
+    "swf_yolu": "https://ayberkkr.github.io/pixl-bulut/sfh.swf",
+    "kapak": "https://ayberkkr.github.io/pixl-bulut/sfh-kapak.jpg"
+  },
+  {
+    "id": "haunted1",
+    "ad": "HAUNTED HOUSE",
+    "aciklama": "Karanlık ve ürkütücü bir köşkte hayatta kalma mücadelesi!",
+    "swf_yolu": "https://ayberkkr.github.io/pixl-bulut/haunted_house.swf",
+    "kapak": "https://ayberkkr.github.io/pixl-bulut/hauntedhouse.jpg"
+  },
+  {
+    "id": "fancy4",
+    "ad": "FANCY PANTS 4",
+    "aciklama": "Fancy Pants Adventures'ın 4. dünyasında turuncu pantolonunla maceraya atıl!",
+    "swf_yolu": "https://ayberkkr.github.io/pixl-bulut/FPAWorld4p3.swf",
+    "kapak": "https://ayberkkr.github.io/pixl-bulut/fancypants4.jpg"
+  }
+]

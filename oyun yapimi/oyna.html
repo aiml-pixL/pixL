@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>pixL - Oyun Yükleniyor...</title>
+    <link rel="stylesheet" href="style.css">
+    
+    <!-- Ruffle.js - Flash Emülatörü -->
+    <script src="https://unpkg.com/@ruffle-rs/ruffle"></script>
+
+    <style>
+        #game-container:fullscreen {
+            width: 100vw !important;
+            height: 100vh !important;
+            background-color: black;
+            border: none !important;
+            border-radius: 0 !important;
+            max-width: none !important;
+        }
+        #game-container:fullscreen embed {
+            width: 100%;
+            height: 100%;
+        }
+    </style>
+</head>
+<body>
+    
+    <div class="site-container">
+        <!-- STANDART SOL MENÜMÜZ -->
+        <nav class="sidebar">
+            <div class="logo-container" title="pixL Anasayfa" onclick="window.location.href='index.html'">
+                <img src="logo.jpg" alt="pixL Logo" class="site-logo">
+            </div>
+            <a href="index.html" class="menu-item">Ana Sayfa</a>
+            <a href="index.html" class="menu-item">Tüm Oyunlar</a>
+            <a href="hakkimizda.html" class="menu-item">Hakkımızda</a>
+        </nav>
+
+        <!-- OYUN ALANI -->
+        <main class="content-area">
+            
+            <div class="header-section">
+                <div class="top-controls">
+                    <label class="theme-switch" title="Tema Değiştir">
+                        <input type="checkbox" id="themeToggle" onchange="toggleTheme()">
+                        <span class="slider"></span>
+                    </label>
+                </div>
+            </div>
+
+            <!-- DİNAMİK OYUN KUTUSU -->
+            <div style="background-color: var(--bg-card); padding: 30px; border-radius: 8px; border: 2px solid var(--border-color); text-align: center;">
+                
+                <!-- Başlık JS ile değişecek -->
+                <h1 id="oyun-baslik" style="color: var(--accent-color); margin-top: 0; margin-bottom: 20px;">OYUN YÜKLENİYOR...</h1>
+                
+                <!-- Tam Ekran Butonu -->
+                <button onclick="tamEkranYap()" style="margin-bottom: 20px; padding: 12px 25px; background-color: var(--accent-color); color: white; border: none; border-radius: 5px; cursor: pointer; font-weight: bold; font-size: 16px; transition: 0.3s;">
+                    TAM EKRAN OYNA
+                </button>
+
+                <!-- Oyun Embed Alanı (JS ile içine embed kodu basılacak) -->
+                <div id="game-container" style="width: 100%; max-width: 900px; height: 600px; margin: 0 auto; border: 4px solid var(--border-color); border-radius: 8px; overflow: hidden; background-color: #000; display: flex; align-items: center; justify-content: center;">
+                    <p style="color: white; font-weight: bold;">Ruffle Başlatılıyor...</p>
+                </div>
+                
+                <!-- Oyun Hikayesi -->
+                <div style="margin-top: 30px; text-align: left; background-color: var(--bg-sidebar); padding: 25px; border-radius: 8px; border: 1px solid var(--border-color);">
+                    <h2 style="color: var(--accent-color); margin-top: 0; border-bottom: 2px solid var(--border-color); padding-bottom: 10px;">Oyun Hakkında</h2>
+                    <!-- Açıklama JS ile değişecek -->
+                    <p id="oyun-aciklama" style="color: var(--text-main); line-height: 1.6; font-size: 16px;">
+                        Lütfen bekleyin, oyun verileri sunucudan çekiliyor...
+                    </p>
+                </div>
+
+            </div>
+
+        </main>
+    </div>
+
+    <!-- DİNAMİK VERİ ÇEKME SİHRİ BURADA -->
+    <script>
+        // 1. URL'den hangi oyuna tıklandığını bul (Örn: ?oyun=sfh1)
+        const urlParams = new URLSearchParams(window.location.search);
+        const secilenOyunID = urlParams.get('oyun');
+
+        // 2. oyunlar.json dosyasını (API'mizi) fetch et
+        fetch('oyunlar.json')
+            .then(response => response.json())
+            .then(veritabani => {
+                // 3. Tıklanan ID'yi veritabanında ara
+                const oyun = veritabani.find(item => item.id === secilenOyunID);
+
+                if (oyun) {
+                    // 4. Oyun bulunduysa sayfadaki yazıları ve Ruffle kodunu değiştir
+                    document.title = "pixL - " + oyun.ad + " Oyna";
+                    document.getElementById('oyun-baslik').innerText = oyun.ad;
+                    document.getElementById('oyun-aciklama').innerText = oyun.aciklama;
+                    
+                    // Ruffle'a oyunu ver
+                    document.getElementById('game-container').innerHTML = `<embed src="${oyun.swf_yolu}" width="100%" height="100%">`;
+                } else {
+                    // Oyun bulunamazsa hata göster
+                    document.getElementById('oyun-baslik').innerText = "HATA: OYUN BULUNAMADI!";
+                    document.getElementById('oyun-aciklama').innerText = "Bu oyun sistemde kayıtlı değil veya kaldırılmış olabilir.";
+                    document.getElementById('game-container').innerHTML = `<p style="color: red; font-size: 20px;">404 - DOSYA YOK</p>`;
+                }
+            })
+            .catch(error => {
+                console.error("Veritabanı çekilemedi:", error);
+            });
+
+        // Tema ve Tam Ekran Fonksiyonları
+        function toggleTheme() { document.body.classList.toggle('light-mode'); }
+        function tamEkranYap() {
+            const gameContainer = document.getElementById('game-container');
+            if (gameContainer.requestFullscreen) { gameContainer.requestFullscreen(); } 
+            else if (gameContainer.webkitRequestFullscreen) { gameContainer.webkitRequestFullscreen(); }
+        }
+    </script>
+</body>
+</html>

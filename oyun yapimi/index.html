@@ -1,0 +1,345 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>pixL - Oyun Portalı</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    
+    <div class="site-container">
+
+        <nav class="sidebar" style="display: flex; flex-direction: column;">
+            <div class="logo-container" title="pixL Anasayfa" onclick="window.location.href='index.html'">
+                <img src="logo.jpg" alt="pixL Logo" class="site-logo">
+            </div>
+            
+            <a href="index.html" class="menu-item active" data-lang="home">Ana Sayfa</a>
+            <!-- TÜM OYUNLAR BUTONUNA TIKLAMA GÖREVİ VERDİK -->
+            <a href="#" class="menu-item" data-lang="all_games" onclick="tumOyunlariGoster(event)">Tüm Oyunlar</a>
+            
+            <div class="menu-item" id="kategori-btn" onclick="kategoriAc()">
+                <span data-lang="categories">Kategoriler</span> <span id="ok">▼</span>
+            </div>
+            <div class="submenu" id="alt-menu">
+                <a href="#" data-lang="action">Aksiyon</a>
+                <a href="#" data-lang="racing">Yarış</a>
+                <a href="#" data-lang="puzzle">Bulmaca</a>
+                <a href="#" data-lang="girls">Kız Oyunları</a>
+            </div>
+
+            <a href="hakkimizda.html" class="menu-item" data-lang="about">Hakkımızda</a>
+
+            <!-- YENİ EKLENEN GERİ BİLDİRİM BUTONU (En alta iter) -->
+            <a href="feedback.html" class="menu-item" style="margin-top: auto; color: #ff4d4d; border-top: 1px solid #333;">
+                <svg style="vertical-align: middle; margin-right: 5px;" xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"></path><line x1="12" y1="9" x2="12" y2="13"></line><line x1="12" y1="17" x2="12.01" y2="17"></line></svg>
+                Hata Bildir
+            </a>
+        </nav>
+
+        <main class="content-area">
+
+            <div class="header-section">
+                <div class="top-controls">
+                    <label class="theme-switch" title="Tema Değiştir">
+                        <input type="checkbox" id="themeToggle" onchange="toggleTheme()">
+                        <span class="slider"></span>
+                    </label>
+                    
+                    <div class="language-flags">
+                        <span class="lang-btn" onclick="changeLanguage('tr')" title="Türkçe">TR</span>
+                        <span class="lang-btn" onclick="changeLanguage('en')" title="English">EN</span>
+                    </div>
+                </div>
+                
+                <header class="top-bar">
+                    <input type="text" id="search-input" class="search-input" data-lang="search_placeholder" placeholder="Oyun Ara (Örn: Ateş ve Su)..." onkeyup="aramaYap(event)">
+                    <button class="search-btn" onclick="aramaYap()">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <circle cx="11" cy="11" r="8"></circle>
+                            <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+                        </svg>
+                    </button>
+                </header>
+            </div>
+            
+            <div id="main-content">
+                <div class="slider-container">
+                    <button class="slider-btn" onclick="prevSlide()">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+                            <polyline points="15 18 9 12 15 6"></polyline>
+                        </svg>
+                    </button>
+                    
+                    <div class="slider-oyun">
+                        
+                        <!-- 1. OYUN: STRIKE FORCE HEROES -->
+                        <div class="slide active">
+                            <h3 data-lang="pop_game_1">STRIKE FORCE HEROES</h3>
+                            
+                            <div class="slide-img-container" onclick="window.location.href='oyna.html?oyun=sfh1'">
+                                <img src="https://ayberkkr.github.io/pixl-bulut/sfh-kapak.jpg" alt="SFH Kapak" class="slide-img">
+                                <button class="play-btn">HEMEN OYNA</button>
+                            </div>
+                        </div>
+                        
+                        <!-- 2. OYUN: HAUNTED HOUSE (YENİ EKLENEN) -->
+                        <div class="slide">
+                            <h3>HAUNTED HOUSE</h3>
+                            
+                            <div class="slide-img-container" onclick="window.location.href='oyna.html?oyun=haunted1'">
+                                <img src="https://ayberkkr.github.io/pixl-bulut/hauntedhouse.jpg" alt="Haunted House Kapak" class="slide-img">
+                                <button class="play-btn">HEMEN OYNA</button>
+                            </div>
+                        </div>
+                        
+                        <!-- 3. OYUN: FANCY PANTS 4 -->
+                        <div class="slide">
+                            <h3>FANCY PANTS 4</h3>
+                            
+                            <div class="slide-img-container" onclick="window.location.href='oyna.html?oyun=fancy4'">
+                                <img src="https://ayberkkr.github.io/pixl-bulut/fancypants4.jpg" alt="Fancy Pants 4 Kapak" class="slide-img">
+                                <button class="play-btn">HEMEN OYNA</button>
+                            </div>
+                        </div>
+                        
+                        <!-- 4. OYUN YER TUTUCU -->
+                        <div class="slide">
+                            <h3 data-lang="pop_game_4">BULMACA USTASI</h3>
+                            <p data-lang="iframe_text_4">(Zekanı test edecek zorlu bölümler)</p>
+                        </div>
+                    </div>
+                    
+                    <button class="slider-btn" onclick="nextSlide()">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+                            <polyline points="9 18 15 12 9 6"></polyline>
+                        </svg>
+                    </button>
+                    
+                    <div class="dots">
+                        <span class="dot active" onclick="goToSlide(0)">1</span>
+                        <span class="dot" onclick="goToSlide(1)">2</span>
+                        <span class="dot" onclick="goToSlide(2)">3</span>
+                        <span class="dot" onclick="goToSlide(3)">4</span>
+                    </div>
+                </div>
+                
+                <h2 id="grid-baslik" style="color: white; margin-top: 30px; font-size: 1.5rem;">Yeni Çıkan Oyunlar</h2>
+                <div class="game-grid" id="oyun-izgarasi">
+                    <!-- Kutular JS ile otomatik dolacak -->
+                </div>
+            </div>
+
+            <div id="no-results">
+                <img src="capybara.png" alt="Bulunamadı" class="capybara-img">
+                <h2 data-lang="no_results_title">Sonuç Bulunamadı...</h2>
+                <p data-lang="no_results_text">Farklı bir kelimeyle tekrar aramayı dene.</p>
+            </div>
+
+        </main>
+    </div>
+
+    <script>
+let currentSlide = 0;
+        function showSlide(index) {
+            const slides = document.querySelectorAll('.slide');
+            const dots = document.querySelectorAll('.dot');
+            if(slides.length === 0) return; 
+
+            slides.forEach(s => s.classList.remove('active'));
+            dots.forEach(d => d.classList.remove('active'));
+
+            if(index >= slides.length) currentSlide = 0;
+            else if(index < 0) currentSlide = slides.length - 1;
+            else currentSlide = index;
+
+            slides[currentSlide].classList.add('active');
+            dots[currentSlide].classList.add('active');
+        }
+
+        function nextSlide() { showSlide(currentSlide + 1); }
+        function prevSlide() { showSlide(currentSlide - 1); }
+        function goToSlide(index) { showSlide(index); }
+
+        let butunOyunlar = [];
+
+        // Sayfa açıldığında oyunları JSON'dan çek
+        fetch('oyunlar.json')
+            .then(response => response.json())
+            .then(data => {
+                butunOyunlar = data;
+                yeniCikanlariGoster(); // Çekme bitince yeni çıkanları diz
+            });
+
+        function oyunuKutuyaCevir(oyun) {
+            // Arka plana resmi koyup, yazıyı üstüne basıyoruz
+            return `
+                <div class="game-box" onclick="window.location.href='oyna.html?oyun=${oyun.id}'" style="background-image: url('${oyun.kapak}'); background-size: cover; background-position: center; position: relative;">
+                    <div style="position: absolute; bottom: 0; left: 0; width: 100%; background: rgba(0,0,0,0.8); color: white; padding: 10px 0; font-size: 14px; text-transform: uppercase;">
+                        ${oyun.ad}
+                    </div>
+                </div>
+            `;
+        }
+
+        function yeniCikanlariGoster() {
+            document.querySelector('.slider-container').style.display = 'block';
+            document.getElementById('grid-baslik').innerText = "Yeni Çıkan Oyunlar";
+            
+            // Listeyi ters çevir (en yeni en başa gelsin) ve ilk 4'ünü al
+            let sonOyunlar = [...butunOyunlar].reverse().slice(0, 4);
+            
+            let html = '';
+            sonOyunlar.forEach(oyun => { html += oyunuKutuyaCevir(oyun); });
+            document.getElementById('oyun-izgarasi').innerHTML = html;
+        }
+
+        function tumOyunlariGoster(event) {
+            if(event) event.preventDefault(); // Linkin sayfayı yenilemesini engelle
+            
+            // Slider'ı gizle, başlığı değiştir
+            document.querySelector('.slider-container').style.display = 'none';
+            document.getElementById('grid-baslik').innerText = "Tüm Oyunlar";
+            
+            // Bütün oyunları ters sırayla ekrana bas
+            let html = '';
+            [...butunOyunlar].reverse().forEach(oyun => { html += oyunuKutuyaCevir(oyun); });
+            document.getElementById('oyun-izgarasi').innerHTML = html;
+        }
+
+        // --- YENİ VE AKILLI ARAMA MOTORU ---
+        function aramaYap() {
+            let input = document.getElementById('search-input').value.toLowerCase().trim();
+            let mainContent = document.getElementById('main-content');
+            let noResults = document.getElementById('no-results');
+            
+            let slides = document.querySelectorAll('.slide');
+            let gameBoxes = document.querySelectorAll('.game-box');
+            
+            let sliderBtns = document.querySelectorAll('.slider-btn');
+            let dots = document.querySelector('.dots');
+            let sliderOyun = document.querySelector('.slider-oyun');
+
+            // Eğer arama kutusu boşsa her şeyi eski (orijinal) haline döndür
+            if (input === '') {
+                mainContent.style.display = 'block';
+                noResults.style.display = 'none';
+                
+                sliderBtns.forEach(btn => btn.style.display = '');
+                if(dots) dots.style.display = '';
+                
+                sliderOyun.style.display = '';
+                sliderOyun.style.flexWrap = '';
+                sliderOyun.style.justifyContent = '';
+
+                slides.forEach(slide => slide.style.display = '');
+                gameBoxes.forEach(box => box.style.display = '');
+                
+                showSlide(currentSlide); // Slaytı tekrar düzelt
+                return;
+            }
+
+            // Arama yapılıyorsa oyunları filtrele
+            let matchCount = 0;
+            
+            sliderBtns.forEach(btn => btn.style.display = 'none'); // Slayt oklarını gizle
+            if(dots) dots.style.display = 'none'; // Noktaları gizle
+            
+            // Eşleşenleri yan yana dizmek için slider'ı serbest bırak
+            sliderOyun.style.display = 'flex';
+            sliderOyun.style.flexWrap = 'wrap';
+            sliderOyun.style.justifyContent = 'center';
+            sliderOyun.style.gap = '20px';
+
+            // Slaytlardaki oyun isimlerini kontrol et
+            slides.forEach(slide => {
+                let title = slide.querySelector('h3');
+                if (title && title.innerText.toLowerCase().includes(input)) {
+                    slide.style.display = 'block'; // Eşleşeni göster
+                    matchCount++;
+                } else {
+                    slide.style.display = 'none'; // Eşleşmeyeni gizle
+                }
+            });
+
+            // Alttaki küçük oyun kutularını kontrol et
+            gameBoxes.forEach(box => {
+                if (box.innerText.toLowerCase().includes(input)) {
+                    box.style.display = ''; // CSS'in orijinal haline bırak
+                    matchCount++;
+                } else {
+                    box.style.display = 'none';
+                }
+            });
+
+            // Eğer en az 1 oyun bulunduysa oyunları göster, bulunamadıysa Capybara'yı aç!
+            if (matchCount > 0) {
+                mainContent.style.display = 'block';
+                noResults.style.display = 'none';
+            } else {
+                mainContent.style.display = 'none';
+                noResults.style.display = 'flex';
+            }
+        }
+
+        function toggleTheme() { document.body.classList.toggle('light-mode'); }
+        function kategoriAc() {
+            var menu = document.getElementById("alt-menu");
+            var ok = document.getElementById("ok");
+            if (menu.style.display === "block") {
+                menu.style.display = "none";
+                ok.innerHTML = "▼";
+            } else {
+                menu.style.display = "block";
+                ok.innerHTML = "▲"; 
+            }
+        }
+
+        const dictionary = {
+            'tr': {
+                'home': 'Ana Sayfa', 'all_games': 'Tüm Oyunlar', 'categories': 'Kategoriler',
+                'action': 'Aksiyon', 'racing': 'Yarış', 'puzzle': 'Bulmaca', 'girls': 'Kız Oyunları',
+                'about': 'Hakkımızda', 'search_placeholder': 'Oyun Ara (Örn: Ateş ve Su)...',
+                
+                'pop_game_1': 'STRIKE FORCE HEROES',
+                'pop_game_2': 'HAUNTED HOUSE', // !!! DÜZELTİLDİ !!!
+                
+                'pop_game_3': 'ARABA YARIŞI 3D', 'iframe_text_3': '(Asfaltta hız sınırlarını zorla!)',
+                'pop_game_4': 'BULMACA USTASI', 'iframe_text_4': '(Zekanı test edecek zorlu bölümler)',
+                'game_1': 'OYUN 1', 'game_2': 'OYUN 2', 'game_3': 'OYUN 3', 'game_4': 'OYUN 4',
+                'no_results_title': 'Sonuç Bulunamadı...', 'no_results_text': 'Farklı bir kelimeyle tekrar aramayı dene.',
+                'about_title': 'Biz Kimiz?',
+                'about_text': 'Biz, Yapay Zeka ve Makine Öğrenmesi bölümünde okuyan yazılım tutkunu 5 birinci sınıf öğrencisinden oluşan <strong>pixL</strong> ekibiyiz...'
+            },
+            'en': {
+                'home': 'Home', 'all_games': 'All Games', 'categories': 'Categories',
+                'action': 'Action', 'racing': 'Racing', 'puzzle': 'Puzzle', 'girls': 'Girls Games',
+                'about': 'About Us', 'search_placeholder': 'Search Game...',
+                
+                'pop_game_1': 'STRIKE FORCE HEROES',
+                'pop_game_2': 'HAUNTED HOUSE', // !!! DÜZELTİLDİ !!!
+                
+                'pop_game_3': 'CAR RACING 3D', 'iframe_text_3': '(Push the speed limits on the asphalt!)',
+                'pop_game_4': 'PUZZLE MASTER', 'iframe_text_4': '(Challenging levels to test your brain)',
+                'game_1': 'GAME 1', 'game_2': 'GAME 2', 'game_3': 'GAME 3', 'game_4': 'GAME 4',
+                'no_results_title': 'No Results Found...', 'no_results_text': 'Try searching with a different keyword.',
+                'about_title': 'Who Are We?',
+                'about_text': 'We are the <strong>pixL</strong> team...'
+            }
+        };
+
+        function changeLanguage(lang) {
+            const elements = document.querySelectorAll('[data-lang]');
+            elements.forEach(el => {
+                const key = el.getAttribute('data-lang');
+                if (dictionary[lang][key]) {
+                    if (el.tagName === 'INPUT') el.placeholder = dictionary[lang][key];
+                    else if (el.tagName === 'P' || el.tagName === 'H3') el.innerHTML = dictionary[lang][key]; 
+                    else el.innerText = dictionary[lang][key];
+                }
+            });
+        }
+    </script>
+</body>
+</html>

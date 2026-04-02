@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hata Bildir - pixL</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        .feedback-container {
+            max-width: 600px;
+            margin: 50px auto;
+            background: #1e1e24;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.5);
+            color: white;
+            text-align: center;
+        }
+        .feedback-container input, .feedback-container textarea {
+            width: 100%;
+            padding: 15px;
+            margin: 10px 0;
+            border-radius: 5px;
+            border: none;
+            background: #2b2b36;
+            color: white;
+            font-family: inherit;
+        }
+        .feedback-container button {
+            background: #ff4d4d;
+            color: white;
+            border: none;
+            padding: 15px 30px;
+            font-size: 16px;
+            font-weight: bold;
+            border-radius: 5px;
+            cursor: pointer;
+            width: 100%;
+            transition: 0.3s;
+        }
+        .feedback-container button:hover {
+            background: #e63939;
+        }
+    </style>
+</head>
+<body>
+    <div class="site-container">
+        <!-- İstersen buraya da sol menüyü (sidebar) kopyalayabilirsin -->
+        <main class="content-area" style="width: 100%;">
+            
+            <div class="feedback-container">
+                <h1 style="margin-bottom: 10px;">Bize Ulaşın</h1>
+                <p style="margin-bottom: 30px; color: #aaa;">Oyunlarda bir hata mı var? Veya sitemize eklenmesini istediğin bir oyun mu var? Bize hemen yaz!</p>
+                
+                <!-- FORMSPREE BAĞLANTISI BURAYA GELECEK -->
+                <form action="https://formspree.io/f/mreoajnr" method="POST">
+                    <input type="text" name="isim" placeholder="Oyuncu Adın (Rastgele bir isim girebilirsin)" required>
+                    <textarea name="mesaj" rows="6" placeholder="Mesajın, bulduğun bug veya oyun önerin..." required></textarea>
+                    <button type="submit">MESAJI GÖNDER</button>
+                </form>
+                
+                <button onclick="window.location.href='index.html'" style="background: #333; margin-top: 15px;">ANA SAYFAYA DÖN</button>
+            </div>
+
+        </main>
+    </div>
+</body>
+</html>
